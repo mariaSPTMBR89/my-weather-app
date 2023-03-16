@@ -104,6 +104,10 @@
   margin-top: 20px;
   color: #353519;
 }
+.git-link {
+  display: block;
+  text-align: center;
+}
 #time {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
