@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamburg Weather</title>
+    <script
+      src="https://kit.fontawesome.com/535c748ef2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="search">
+        <form>
+          <input
+            type="search"
+            for="city"
+            id="input"
+            placeholder="Search City"
+          />
+          <button type="submit" class="btn btn-primary">Search</button>
+          <button id="location" type="button" class="btn btn-outline-primary">
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </button>
+        </form>
+      </section>
+      <section class="main">
+        <div class="row">
+          <div class="col-4 weatherimage">
+            <h2>Cloudy</h2>
+            <img src="media/cloudy.svg" alt="cloudy" />
+          </div>
+          <div class="col-4 current-weather">
+            <h3 id="time">Date, Time</h3>
+            <h1>Hamburg</h1>
+            <p class="current-temperature">12°</p>
+            <hr />
+            <div class="row">
+              <div class="col-6">
+                <p class="range">
+                  -2°
+                  <br />
+                  <span class="subline"> MINIMUM </span>
+                </p>
+              </div>
+              <div class="col-6">
+                <p class="range" id="minimum">
+                  10°
+                  <br />
+                  <span class="subline"> MAXIMUM </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 details">
+            <h3>Details</h3>
+            <div class="row">
+              <div class="col-3">
+                <ul>
+                  <li>
+                    <strong> 00 h</strong>
+                  </li>
+                  <li>
+                    <strong> 06 h</strong>
+                  </li>
+                  <li>
+                    <strong> 12 h</strong>
+                  </li>
+                  <li>
+                    <strong> 18 h</strong>
+                  </li>
+                  <li>
+                    <strong> 24 h</strong>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-3">
+                <ul>
+                  <li class="icon">
+                    <i class="fa-solid fa-droplet"></i>
+                  </li>
+                  <li class="icon">
+                    <i class="fa-solid fa-droplet"></i>
+                  </li>
+                  <li class="icon">
+                    <i class="fa-solid fa-cloud"></i>
+                  </li>
+                  <li class="icon">
+                    <i class="fa-solid fa-droplet"></i>
+                  </li>
+                  <li class="icon">
+                    <i class="fa-solid fa-droplet"></i>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-3">
+                <ul>
+                  <li>90%</li>
+                  <li>60%</li>
+                  <li>80%</li>
+                  <li>70%</li>
+                  <li>60%</li>
+                </ul>
+              </div>
+              <div class="col-3">
+                <ul>
+                  <li>6km/h</li>
+                  <li>3km/h</li>
+                  <li>4km/h</li>
+                  <li>10km/h</li>
+                  <li>6km/h</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="forecast">
+        <div class="row">
+          <div class="col-3 day">
+            <div class="row">
+              <div class="col-6">
+                <img
+                  src="media\DrawKit Vector Illustration Ecology & Environment (1).svg"
+                  alt="cloudy"
+                  class="thumbnail"
+                />
+              </div>
+              <div class="col-6">
+                <h3 class="thumbnail-headline">Tue</h3>
+                <p>3° / 8°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 day">
+            <div class="row">
+              <div class="col-6">
+                <img
+                  src="media\DrawKit Vector Illustration Ecology & Environment (1).svg"
+                  alt="cloudy"
+                  class="thumbnail"
+                />
+              </div>
+              <div class="col-6">
+                <h3 class="thumbnail-headline">Wed</h3>
+                <p>3° / 8°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 day">
+            <div class="row">
+              <div class="col-6">
+                <img
+                  src="media\DrawKit Vector Illustration Ecology & Environment (1).svg"
+                  alt="cloudy"
+                  class="thumbnail"
+                />
+              </div>
+              <div class="col-6">
+                <h3 class="thumbnail-headline">Thu</h3>
+                <p>3° / 8°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 day">
+            <div class="row">
+              <div class="col-6">
+                <img
+                  src="media\DrawKit Vector Illustration Ecology & Environment (1).svg"
+                  alt="cloudy"
+                  class="thumbnail"
+                />
+              </div>
+              <div class="col-6">
+                <h3 class="thumbnail-headline">Fri</h3>
+                <p>3° / 8°</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
