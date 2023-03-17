@@ -43,7 +43,7 @@
       <section class="main">
         <div class="row">
           <div class="col-4 weatherimage">
-            <h2>Cloudy</h2>
+            <h2 id="description">Cloudy</h2>
             <img src="media/cloudy.svg" alt="cloudy" />
           </div>
           <div class="col-4 current-weather">
@@ -54,14 +54,14 @@
             <div class="row">
               <div class="col-6">
                 <p class="range">
-                  -2°
+                  <span id="minimum">-2°</span>
                   <br />
                   <span class="subline"> MINIMUM </span>
                 </p>
               </div>
               <div class="col-6">
-                <p class="range" id="minimum">
-                  10°
+                <p class="range">
+                  <span id="maximum">10°</span>
                   <br />
                   <span class="subline"> MAXIMUM </span>
                 </p>
@@ -120,11 +120,11 @@
               </div>
               <div class="col-3">
                 <ul>
-                  <li>6km/h</li>
-                  <li>3km/h</li>
-                  <li>4km/h</li>
-                  <li>10km/h</li>
-                  <li>6km/h</li>
+                  <li id="windSpeed00">6km/h</li>
+                  <li id="windSpeed06">3km/h</li>
+                  <li id="windSpeed12">4km/h</li>
+                  <li id="windSpeed18">10km/h</li>
+                  <li id="windSpeed24">6km/h</li>
                 </ul>
               </div>
             </div>
