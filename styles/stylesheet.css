@@ -16,6 +16,7 @@
   border-color: #deb8fc;
   color: #353519;
   background-color: #deb8fc;
+  margin-right: 0;
 }
 .btn-outline-primary:hover {
   background-color: #cc89ff;
@@ -96,6 +97,7 @@
   margin-right: 60px;
 }
 .day {
+  width: 19%;
   background-color: #f4ece5;
   border-radius: 10px;
   border-color: none;
@@ -124,13 +126,14 @@
   margin-bottom: 40px;
 }
 input {
-  width: 100%;
+  width: 82%;
   height: 60px;
   border-top: #353519;
   border-left: #353519;
   border-right: #353519;
-  border-width: 2px;
+  border-width: 0px;
   padding-left: 20px;
+  margin-right: 60px;
   font-family: "Rubik", sans-serif;
   font-size: 32px;
   font-weight: 600;
