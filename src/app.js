@@ -35,7 +35,7 @@ function searchCity(event) {
     console.log(response.data);
     let temperature = Math.round(response.data.main.temp);
     let temperatureElement = document.querySelector(".current-temperature");
-    temperatureElement.innerHTML = `${temperature}°`;
+    temperatureElement.innerHTML = `${temperature}`;
 
     let cityName = response.data.name;
     let city = document.querySelector("h1");
@@ -43,11 +43,11 @@ function searchCity(event) {
 
     let minTemperature = Math.round(response.data.main.temp_min);
     let minTemperatureElement = document.querySelector("#minimum");
-    minTemperatureElement.innerHTML = `${minTemperature}°`;
+    minTemperatureElement.innerHTML = `${minTemperature}`;
 
     let maxTemperature = Math.round(response.data.main.temp_max);
     let maxTemperatureElement = document.querySelector("#maximum");
-    maxTemperatureElement.innerHTML = `${maxTemperature}°`;
+    maxTemperatureElement.innerHTML = `${maxTemperature}`;
 
     let description = response.data.weather[0].description;
     let descriptionElement = document.querySelector("#description");

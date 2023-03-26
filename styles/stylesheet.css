@@ -58,6 +58,7 @@
   font-size: 60px;
   text-align: center;
   color: #353519;
+  margin-bottom: 0;
 }
 .range {
   font-size: 24px;
@@ -108,6 +109,12 @@
   display: block;
   text-align: center;
 }
+.units {
+  display: block;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+}
 #time {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
@@ -142,7 +149,7 @@ h1 {
   font-size: 72px;
   text-align: center;
   color: #353519;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 h2 {
   font-size: 42px;
