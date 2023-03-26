@@ -52,6 +52,35 @@ function searchCity(event) {
     let description = response.data.weather[0].description;
     let descriptionElement = document.querySelector("#description");
     descriptionElement.innerHTML = description;
+    let illuCode = response.data.weather[0].main;
+    let weatherIllustration = document.querySelector("#weatherIllu");
+    if (illuCode === "Clear") {
+      weatherIllustration.setAttribute("src", "media/clearsky.svg");
+    }
+    if (illuCode === "Drizzle") {
+      weatherIllustration.setAttribute("src", "media/fewclouds.svg");
+    }
+    if (illuCode === "Clouds") {
+      weatherIllustration.setAttribute("src", "media/cloudy.svg");
+    }
+    if (illuCode === "Fog") {
+      weatherIllustration.setAttribute("src", "media/brokenclouds.svg");
+    }
+    if (illuCode === "Rain") {
+      weatherIllustration.setAttribute("src", "media/showerrain.svg");
+    }
+    if (illuCode === "Drizzle") {
+      weatherIllustration.setAttribute("src", "media/rain.svg");
+    }
+    if (illuCode === "Thunderstorm") {
+      weatherIllustration.setAttribute("src", "media/brokenclouds.svg");
+    }
+    if (illuCode === "Snow") {
+      weatherIllustration.setAttribute("src", "media/mist.svg");
+    }
+    if (illuCode === "Mist") {
+      weatherIllustration.setAttribute("src", "media/mist.svg");
+    }
 
     let windSpeed = Math.round(response.data.wind.speed);
     let windSpeed00 = document.querySelector("#windSpeed00");
