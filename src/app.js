@@ -37,6 +37,8 @@ function searchCity(event) {
     let temperatureElement = document.querySelector(".current-temperature");
     temperatureElement.innerHTML = `${temperature}`;
 
+    celciusTemperature = response.data.main.temp;
+
     let cityName = response.data.name;
     let city = document.querySelector("h1");
     city.innerHTML = cityName;
@@ -81,7 +83,6 @@ function searchCity(event) {
     if (illuCode === "Mist") {
       weatherIllustration.setAttribute("src", "media/mist.svg");
     }
-
     let windSpeed = Math.round(response.data.wind.speed);
     let windSpeed00 = document.querySelector("#windSpeed00");
     windSpeed00.innerHTML = `${windSpeed}km/h`;
@@ -94,13 +95,10 @@ function searchCity(event) {
     let windSpeed24 = document.querySelector("#windSpeed24");
     windSpeed24.innerHTML = `${windSpeed * 2}km/h`;
   }
-
   axios
     .get(`${apiUrl}${searchInput.value}&units=metric&appid=${apiKey}`)
     .then(showWeather);
 }
-let searchForm = document.querySelector(".search");
-searchForm.addEventListener("submit", searchCity);
 
 function showCurrentTemperature(response) {
   let temperatureLocation = Math.round(response.data.main.temp);
@@ -124,3 +122,33 @@ function showCurrentTemperature(response) {
 
 let searchLocation = document.querySelector("button.btn-outline-primary");
 searchLocation.addEventListener("click", showCurrentTemperature);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  celsiusLink.classList.add("clickable");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = Math.round((celciusTemperature * 9) / 5 + 32);
+  let temperatureElement = document.querySelector(".current-temperature");
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  fahrenheitLink.classList.add("clickable");
+  let temperatureElement = document.querySelector(".current-temperature");
+  temperatureElement.innerHTML = celciusTemperature;
+}
+
+let celciusTemperature = null;
+
+let searchForm = document.querySelector(".search");
+searchForm.addEventListener("submit", searchCity);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click, displayCelsiusTemperature");

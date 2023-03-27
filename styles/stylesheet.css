@@ -117,6 +117,17 @@
   text-align: center;
   font-family: "Rubik", sans-serif;
 }
+.clickable {
+  color: #353519;
+  font-weight: 600;
+  text-decoration: none;
+}
+.active {
+  color: #353519;
+  text-decoration: none;
+  cursor: default;
+}
+
 #time {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
