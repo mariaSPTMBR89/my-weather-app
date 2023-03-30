@@ -24,6 +24,31 @@ function formatTime(time) {
 let time = document.querySelector("#time");
 time.innerHTML = formatTime(new Date());
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-3 day">
+            <div class="row">
+              <div class="col-6">
+                <img src="media/fewclouds.svg" alt="cloudy" class="thumbnail" />
+              </div>
+              <div class="col-6">
+                <h3 class="thumbnail-headline">${day}</h3>
+                <p>3° / 8°</p>
+              </div>
+            </div>
+          </div>
+    `;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector(".search input");
@@ -143,6 +168,8 @@ function displayCelsiusTemperature(event) {
 }
 
 let celciusTemperature = null;
+
+displayForecast();
 
 let searchForm = document.querySelector(".search");
 searchForm.addEventListener("submit", searchCity);
