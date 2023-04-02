@@ -24,11 +24,11 @@ function formatTime(time) {
 let time = document.querySelector("#time");
 time.innerHTML = formatTime(new Date());
 
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
@@ -38,8 +38,11 @@ function displayForecast() {
                 <img src="media/fewclouds.svg" alt="cloudy" class="thumbnail" />
               </div>
               <div class="col-6">
-                <h3 class="thumbnail-headline">${day}</h3>
-                <p>3° / 8°</p>
+                <h3 class="thumbnail-headline">${forecastDay.dt}</h3>
+                <div class="forecast-range">
+                <span class="forecast-min"> ${forecastDay.temp.min}° </span> 
+                <span class="forecast-max"> ${forecastDay.temp.max}° </span>
+                </div>
               </div>
             </div>
           </div>
@@ -47,6 +50,13 @@ function displayForecast() {
   });
 
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "5354b60afda2b7800186c06153932396";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function searchCity(event) {
@@ -119,6 +129,8 @@ function searchCity(event) {
     windSpeed18.innerHTML = `${windSpeed}km/h`;
     let windSpeed24 = document.querySelector("#windSpeed24");
     windSpeed24.innerHTML = `${windSpeed * 2}km/h`;
+
+    getForecast(response.data.coord);
   }
   axios
     .get(`${apiUrl}${searchInput.value}&units=metric&appid=${apiKey}`)
@@ -133,8 +145,8 @@ function showCurrentTemperature(response) {
   temperatureLocationElement.innerHTML = `${temperatureLocation}°C`;
 
   function showPosition(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
+    let lat = position.coord.latitude;
+    let lon = position.coord.longitude;
     let apiKey = "f3009e4852fa0a079dab291dabf020c4";
     let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
     axios
