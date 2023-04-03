@@ -24,29 +24,43 @@ function formatTime(time) {
 let time = document.querySelector("#time");
 time.innerHTML = formatTime(new Date());
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
     <div class="col-3 day">
             <div class="row">
               <div class="col-6">
                 <img src="media/fewclouds.svg" alt="cloudy" class="thumbnail" />
               </div>
               <div class="col-6">
-                <h3 class="thumbnail-headline">${forecastDay.dt}</h3>
+                <h3 class="thumbnail-headline">${formatDay(forecastDay.dt)}</h3>
                 <div class="forecast-range">
-                <span class="forecast-min"> ${forecastDay.temp.min}° </span> 
-                <span class="forecast-max"> ${forecastDay.temp.max}° </span>
+                <span class="forecast-min"> ${Math.round(
+                  forecastDay.temp.min
+                )}° </span> 
+                <span class="forecast-max"> ${Math.round(
+                  forecastDay.temp.max
+                )}° </span>
                 </div>
               </div>
             </div>
           </div>
     `;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
@@ -72,7 +86,7 @@ function searchCity(event) {
     let temperatureElement = document.querySelector(".current-temperature");
     temperatureElement.innerHTML = `${temperature}`;
 
-    celciusTemperature = response.data.main.temp;
+    celciusTemperature = Math.round(response.data.main.temp);
 
     let cityName = response.data.name;
     let city = document.querySelector("h1");
