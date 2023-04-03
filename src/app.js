@@ -51,7 +51,7 @@ function displayForecast(response) {
                 <div class="forecast-range">
                 <span class="forecast-min"> ${Math.round(
                   forecastDay.temp.min
-                )}° </span> 
+                )}° / </span> 
                 <span class="forecast-max"> ${Math.round(
                   forecastDay.temp.max
                 )}° </span>
@@ -174,32 +174,5 @@ function showCurrentTemperature(response) {
 let searchLocation = document.querySelector("button.btn-outline-primary");
 searchLocation.addEventListener("click", showCurrentTemperature);
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  celsiusLink.classList.add("clickable");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = Math.round((celciusTemperature * 9) / 5 + 32);
-  let temperatureElement = document.querySelector(".current-temperature");
-  temperatureElement.innerHTML = fahrenheitTemperature;
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  fahrenheitLink.classList.add("clickable");
-  let temperatureElement = document.querySelector(".current-temperature");
-  temperatureElement.innerHTML = celciusTemperature;
-}
-
-let celciusTemperature = null;
-
 let searchForm = document.querySelector(".search");
 searchForm.addEventListener("submit", searchCity);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
