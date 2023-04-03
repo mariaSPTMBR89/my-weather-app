@@ -181,8 +181,6 @@ function displayCelsiusTemperature(event) {
 
 let celciusTemperature = null;
 
-displayForecast();
-
 let searchForm = document.querySelector(".search");
 searchForm.addEventListener("submit", searchCity);
 
@@ -190,4 +188,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click, displayCelsiusTemperature");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
